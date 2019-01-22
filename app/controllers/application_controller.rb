@@ -43,7 +43,7 @@ class ApplicationController < Sinatra::Base
   end
 	end
 
-	get "/account" do
+	get "/success" do
 		if logged_in?
 			erb :account
 		else
