@@ -31,17 +31,16 @@ class ApplicationController < Sinatra::Base
 		erb :login
 	end
 
-	post "/login" do
-		#your code here!
-		user = User.find_by(:username => params[:username])
-
+  post "/login" do
+  user = User.find_by(:username => params[:username])
+ 
   if user && user.authenticate(params[:password])
     session[:user_id] = user.id
-    redirect "/account"
+    redirect "/success"
   else
-     redirect "/failure"
-   end
-	end
+    redirect "/failure"
+  end
+end
 
 	get "/account" do
 		if logged_in?
