@@ -59,6 +59,7 @@ post "/signup" do
 end
 
 
+
 	get "/account" do
 		if logged_in?
 			erb :account
