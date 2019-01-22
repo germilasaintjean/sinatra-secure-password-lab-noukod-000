@@ -37,9 +37,9 @@ class ApplicationController < Sinatra::Base
 
   if user && user.authenticate(params[:password])
     session[:user_id] = user.id
-    redirect "/account"
+    redirect "/success"
   else
-    "Flatiron Bank Error"
+    redirect "/failure"
   end
 	end
 
@@ -47,7 +47,7 @@ class ApplicationController < Sinatra::Base
 		if logged_in?
 			erb :account
 		else
-			redirect "/failure"
+			redirect "/login"
 		end
 	end
 
@@ -68,7 +68,6 @@ class ApplicationController < Sinatra::Base
 		def current_user
 			User.find(session[:user_id])
 		end
-  redirect ":/failure"
 	end
 
 end
